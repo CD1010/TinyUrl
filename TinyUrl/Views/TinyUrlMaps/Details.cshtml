@@ -1,0 +1,42 @@
+﻿@model TinyUrl.Models.TinyUrlMap
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Tiny Url</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @{
+                string domain = Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host +
+                            (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port) + "/l/"+ Model.UrlToken;
+
+               
+            }
+            @Html.DisplayNameFor(model => model.UrlToken )
+         
+        </dt>
+
+        <dd>
+           <a href= "@Html.Raw( domain)" target="_blank" > @Html.Raw(domain)</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OriginalUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OriginalUrl)
+        </dd>
+
+    </dl>
+
+</div>
+<p>
+  
+    @Html.ActionLink("List Urls", "Index")
+</p>

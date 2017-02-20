@@ -1,0 +1,18 @@
+﻿
+@model TinyUrl.Models.TinyUrlMap
+
+@{
+    Layout = null;
+    var dest = Model.OriginalUrl;
+    if (dest.StartsWith("http://") || dest.StartsWith("https://"))
+    {
+        Response.Redirect(Model.OriginalUrl);
+    }
+    else
+    {
+        Response.Redirect("http://" + Model.OriginalUrl);
+    }
+
+}
+
+ 
